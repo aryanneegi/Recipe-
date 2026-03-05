@@ -8,6 +8,7 @@ const modalImage = document.getElementById("modalImage");
 const modalTitle = document.getElementById("modalTitle");
 const ingredientList = document.getElementById("ingredientList");
 const modalInstructions = document.getElementById("modalInstructions");
+const searchBtn = document.getElementById("searchBtn");
 
 // Load default
 window.addEventListener("DOMContentLoaded", () => {
@@ -119,16 +120,31 @@ categoryTabs.forEach(tab => {
 });
 
 // Search
-searchInput.addEventListener("keyup", async (e) => {
-  if (e.key === "Enter") {
-    const query = searchInput.value.trim();
-    if (!query) return;
+// Common Search Function
+async function searchRecipes() {
+  const query = searchInput.value.trim();
+  if (!query) return;
 
-    recipeGrid.innerHTML = `<div class="loading">Searching...</div>`;
+  recipeGrid.innerHTML = `<div class="loading">Searching...</div>`;
 
+  try {
     const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
     const data = await res.json();
 
     displayRecipes(data.meals);
+  } catch (error) {
+    recipeGrid.innerHTML = `<div class="no-results">Something went wrong.</div>`;
   }
+}
+
+// Search on Enter
+searchInput.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    searchRecipes();
+  }
+});
+
+// Search on Button Click
+searchBtn.addEventListener("click", () => {
+  searchRecipes();
 });
