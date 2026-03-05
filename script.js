@@ -1,6 +1,7 @@
 const recipeGrid = document.getElementById("recipeGrid");
 const categoryTabs = document.querySelectorAll(".cat-tab");
 const searchInput = document.getElementById("searchInput");
+const recipesTitle = document.getElementById("recipesTitle");
 
 const modalOverlay = document.getElementById("modalOverlay");
 const modalClose = document.getElementById("modalClose");
@@ -47,7 +48,7 @@ function displayRecipes(meals) {
     card.classList.add("recipe-card");
 
     card.innerHTML = `
-      <div class="card-image">
+      <div class="card-img-wrap">
         <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
       </div>
       <div class="card-body">
@@ -114,6 +115,11 @@ categoryTabs.forEach(tab => {
   tab.addEventListener("click", () => {
     document.querySelector(".cat-tab.active").classList.remove("active");
     tab.classList.add("active");
+
+    // Update section title to match selected category
+    if (recipesTitle) {
+      recipesTitle.textContent = tab.dataset.category;
+    }
 
     fetchRecipesByCategory(tab.dataset.category);
   });
