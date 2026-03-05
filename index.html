@@ -4,18 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>APNI RASOI</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="header">
   <div class="container nav">
-    <h1 class="logo">APNI RASOI</h1>
-
+    <div class="logo-wrap">
+      <h1 class="logo">Apni Rasoi</h1>
+      <span class="logo-sub">Home Kitchen</span>
+    </div>
     <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search recipes...">
+      <input type="text" id="searchInput" placeholder="Search recipes…">
       <button id="searchBtn">Search</button>
     </div>
   </div>
@@ -23,18 +24,21 @@
 
 <section class="hero">
   <div class="container">
-    <h2>Discover Simple & Delicious Recipes</h2>
-    <p>Find recipes from around the world in seconds.</p>
+    <span class="hero-eyebrow">Curated Recipes</span>
+    <h2>Simple. Wholesome.<br>Delicious.</h2>
+    <p>Discover recipes from around the world, crafted for every home kitchen.</p>
   </div>
 </section>
 
+<div class="divider"></div>
+
 <section class="categories">
   <div class="container">
+    <p class="section-label">Browse by Category</p>
     <div class="category-tabs">
       <button class="cat-tab active" data-category="Seafood">Seafood</button>
       <button class="cat-tab" data-category="Chicken">Chicken</button>
       <button class="cat-tab" data-category="Dessert">Dessert</button>
-      
       <button class="cat-tab" data-category="Vegetarian">Vegetarian</button>
     </div>
   </div>
@@ -42,20 +46,33 @@
 
 <section class="recipes">
   <div class="container">
-    <div class="recipe-grid" id="recipeGrid"></div>
+    <div class="recipes-header">
+      <h3 class="recipes-title" id="recipesTitle">Seafood</h3>
+      <span class="recipe-count" id="recipeCount"></span>
+    </div>
+    <div class="recipe-grid" id="recipeGrid">
+      <div class="loading-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- Modal -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
-    <button class="close-btn" id="modalClose">✕</button>
-    <img id="modalImage">
-    <h2 id="modalTitle"></h2>
-    <h3>Ingredients</h3>
-    <ul id="ingredientList"></ul>
-    <h3>Instructions</h3>
-    <p id="modalInstructions"></p>
+    <div class="modal-img-wrap">
+      <button class="close-btn" id="modalClose">✕</button>
+      <img id="modalImage" alt="">
+    </div>
+    <div class="modal-body">
+      <span class="modal-category" id="modalCategory"></span>
+      <h2 id="modalTitle"></h2>
+      <p class="modal-section-title">Ingredients</p>
+      <ul id="ingredientList"></ul>
+      <p class="modal-section-title">Instructions</p>
+      <p id="modalInstructions"></p>
+    </div>
   </div>
 </div>
 
