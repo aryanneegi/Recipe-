@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APNI RASOI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <h1 class="logo">APNI RASOI</h1>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search recipes...">
+      <button id="searchBtn">Search</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h2>Discover Simple & Delicious Recipes</h2>
+    <p>Find recipes from around the world in seconds.</p>
+  </div>
+</section>
+
+<section class="categories">
+  <div class="container">
+    <div class="category-tabs">
+      <button class="cat-tab active" data-category="Seafood">Seafood</button>
+      <button class="cat-tab" data-category="Chicken">Chicken</button>
+      <button class="cat-tab" data-category="Dessert">Dessert</button>
+      
+      <button class="cat-tab" data-category="Vegetarian">Vegetarian</button>
+    </div>
+  </div>
+</section>
+
+<section class="recipes">
+  <div class="container">
+    <div class="recipe-grid" id="recipeGrid"></div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="close-btn" id="modalClose">✕</button>
+    <img id="modalImage">
+    <h2 id="modalTitle"></h2>
+    <h3>Ingredients</h3>
+    <ul id="ingredientList"></ul>
+    <h3>Instructions</h3>
+    <p id="modalInstructions"></p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
